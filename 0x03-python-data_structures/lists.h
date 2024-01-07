@@ -1,7 +1,6 @@
 #ifndef LISTS_H
 #define LISTS_H
 
-#include <Python.h>
 #include <stdlib.h>
 #include <stdio.h>
 
@@ -22,7 +21,6 @@ struct listint_s *next;
 size_t print_listint(const listint_t *h);
 listint_t *add_nodeint_end(listint_t **head, const int n);
 void free_listint(listint_t *head);
-void print_python_list_info(PyObject *p);
 int is_palindrome(listint_t **head);
 void reverse(listint_t **head);
 int compare(listint_t *head1, listint_t *head2);
