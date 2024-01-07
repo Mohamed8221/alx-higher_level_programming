@@ -1,114 +1,89 @@
 #include "lists.h"
 
 /**
-* reverse - reverses the second half of the list
-*
-* @h_r: head of the second half
-* Return: no return
+* reverse - reverses a linked list
+* @head: double pointer to head node
+* Return: void
 */
-void reverse(listint_t **h_r)
+void reverse(listint_t **head)
 {
-listint_t *prv;
-listint_t *crr;
-listint_t *nxt;
+listint_t *prev = NULL;
+listint_t *current = *head;
+listint_t *next;
 
-prv = NULL;
-crr = *h_r;
-
-while (crr != NULL)
+while (current)
 {
-nxt = crr->next;
-crr->next = prv;
-prv = crr;
-crr = nxt;
+next = current->next;
+current->next = prev;
+prev = current;
+current = next;
 }
-
-*h_r = prv;
+*head = prev;
 }
 
 /**
-* compare - compares each int of the list
-*
-* @h1: head of the first half
-* @h2: head of the second half
-* Return: 1 if are equals, 0 if not
+* compare - compares two linked lists
+* @head1: head of first linked list
+* @head2: head of second linked list
+* Return: 1 if lists are the same, 0 otherwise
 */
-int compare(listint_t *h1, listint_t *h2)
+int compare(listint_t *head1, listint_t *head2)
 {
-listint_t *tmp1;
-listint_t *tmp2;
+listint_t *temp1 = head1;
+listint_t *temp2 = head2;
 
-tmp1 = h1;
-tmp2 = h2;
-
-while (tmp1 != NULL && tmp2 != NULL)
+while (temp1 && temp2)
 {
-if (tmp1->n == tmp2->n)
+if (temp1->n == temp2->n)
 {
-tmp1 = tmp1->next;
-tmp2 = tmp2->next;
+temp1 = temp1->next;
+temp2 = temp2->next;
 }
 else
-{
 return (0);
 }
-}
-
-if (tmp1 == NULL && tmp2 == NULL)
-{
+if (!temp1 && !temp2)
 return (1);
-}
-
 return (0);
 }
 
 /**
-* is_palindrome - checks if a singly linked list
-* is a palindrome
-* @head: pointer to head of list
-* Return: 0 if it is not a palindrome,
-* 1 if it is a palndrome
+* is_palindrome - checks if a singly linked list is a palindrome
+* @head: double pointer to head node
+* Return: 0 if it is not a palindrome, 1 if it is a palindrome
 */
 int is_palindrome(listint_t **head)
 {
-listint_t *slow, *fast, *prev_slow;
-listint_t *scn_half, *middle;
-int isp;
+listint_t *slow = *head, *fast = *head;
+listint_t *second_half, *prev = *head;
+listint_t *midnode = NULL;
+int res = 1;
 
-slow = fast = prev_slow = *head;
-middle = NULL;
-isp = 1;
-
-if (*head != NULL && (*head)->next != NULL)
+if (*head && (*head)->next)
 {
-while (fast != NULL && fast->next != NULL)
+while (fast && fast->next)
 {
 fast = fast->next->next;
-prev_slow = slow;
+prev = slow;
 slow = slow->next;
 }
-
-if (fast != NULL)
+if (fast)
 {
-middle = slow;
+midnode = slow;
 slow = slow->next;
 }
-
-scn_half = slow;
-prev_slow->next = NULL;
-reverse(&scn_half);
-isp = compare(*head, scn_half);
-
-if (middle != NULL)
+second_half = slow;
+prev->next = NULL;
+reverse(&second_half);
+res = compare(*head, second_half);
+reverse(&second_half);
+if (midnode)
 {
-prev_slow->next = middle;
-middle->next = scn_half;
+prev->next = midnode;
+midnode->next = second_half;
 }
 else
-{
-prev_slow->next = scn_half;
+prev->next = second_half;
 }
-}
-
-return (isp);
+return (res);
 }
