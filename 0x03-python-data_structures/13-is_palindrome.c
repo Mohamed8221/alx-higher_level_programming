@@ -1,35 +1,38 @@
 #include "lists.h"
-#include <stdlib.h>
 
 /**
 * is_palindrome - checks if a singly linked list is a palindrome
-* @head: double pointer to the head node of the singly linked list
-*
-* Return: 1 if the list is a palindrome, 0 otherwise
+* @head: pointer to the head of the linked list
+* Return: 0 if not a palindrome, 1 if a palindrome
 */
 int is_palindrome(listint_t **head)
 {
-listint_t *slow = *head, *fast = *head, *prev = *head, *tmp = NULL;
+listint_t *slow = *head, *fast = *head, *prev = NULL, *temp;
+
+if (!*head || !(*head)->next)
+return (1);
+
 while (fast && fast->next)
 {
 fast = fast->next->next;
-prev = slow;
-slow = slow->next;
-}
-prev->next = NULL;
-while (slow)
-{
-tmp = slow->next;
+
+temp = slow->next;
 slow->next = prev;
 prev = slow;
-slow = tmp;
+slow = temp;
 }
-while (*head && prev)
+
+if (fast)
+slow = slow->next;
+
+while (prev && slow)
 {
-if ((*head)->n != prev->n)
+if (prev->n != slow->n)
 return (0);
-*head = (*head)->next;
+
 prev = prev->next;
+slow = slow->next;
 }
+
 return (1);
 }
