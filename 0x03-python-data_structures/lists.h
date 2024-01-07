@@ -17,6 +17,6 @@ int n;
 struct listint_s *next;
 } listint_t;
 
-
+void print_python_list_info(PyObject *p);
 int is_palindrome(listint_t **head);
 #endif /* LISTS_H */
