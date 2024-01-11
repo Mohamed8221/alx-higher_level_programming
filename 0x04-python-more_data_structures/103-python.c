@@ -1,51 +1,37 @@
-#include <stdio.h>
-#include <time.h>
 #include <Python.h>
-
 void print_python_bytes(PyObject *p);
 void print_python_list(PyObject *p);
 
-void print_python_bytes(PyObject *p) {
-long int size;
-unsigned char *str;
-int i;
-
-printf("[.] bytes object info\n");
-
-if (!PyBytes_Check(p)) {
-printf("  [ERROR] Invalid Bytes Object\n");
-return;
-}
-
-size = PyBytes_Size(p);
-str = (unsigned char *)PyBytes_AsString(p);
-
-printf("  size: %ld\n", size);
-printf("  trying string: %s\n", str);
-
-printf("  first %ld bytes:", (size < 10) ? size + 1 : 10);
-for (i = 0; i <= size && i < 10; i++)
-printf(" %02hhx", str[i]);
-
-printf("\n");
-}
-
 void print_python_list(PyObject *p) {
-long int size = PyList_Size(p);
-int i;
-PyObject *item;
+    printf("[*] Python list info\n");
+    printf("[*] Size of the Python List = %ld\n", Py_SIZE(p));
+    printf("[*] Allocated = %ld\n", ((PyListObject *)p)->allocated);
 
-printf("[*] Python list info\n");
-printf("[*] Size of the Python List = %ld\n", size);
-printf("[*] Allocated = %ld\n", ((PyListObject *)p)->allocated);
-
-for (i = 0; i < size; i++) {
-item = PyList_GetItem(p, i);
-printf("Element %d: %s\n", i, Py_TYPE(item)->tp_name);
-
-if (PyBytes_Check(item)) {
-printf("[.] bytes object info\n");
-print_python_bytes(item);
+    for (int i = 0; i < Py_SIZE(p); i++) {
+        printf("Element %d: ", i);
+        PyObject *item = PyList_GetItem(p, i);
+        if (PyBytes_Check(item)) {
+            print_python_bytes(item);
+        } else {
+            printf("%s\n", Py_TYPE(item)->tp_name);
+        }
+    }
 }
-}
+void print_python_bytes(PyObject *p) {
+    if (!PyBytes_Check(p)) {
+        printf("[.] bytes object info\n  [ERROR] Invalid Bytes Object\n");
+        return;
+    }
+
+    PyBytesObject *bytes = (PyBytesObject *)p;
+    printf("[.] bytes object info\n");
+    printf("  size: %ld\n", bytes->ob_base.ob_size);
+    printf("  trying string: %s\n", PyBytes_AS_STRING(bytes));
+    printf("  first %d bytes: ", MIN(bytes->ob_base.ob_size, 10));
+
+    for (int i = 0; i < MIN(bytes->ob_base.ob_size, 10); i++) {
+        printf("%02x ", ((unsigned char *)bytes->ob_sval)[i]);
+    }
+
+    printf("\n");
 }
