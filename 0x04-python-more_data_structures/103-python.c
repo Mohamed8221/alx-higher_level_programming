@@ -49,19 +49,3 @@ print_python_bytes(item);
 }
 }
 }
-
-int main(void) {
-// Example usage similar to the original code
-PyObject *bytes_obj = PyBytes_FromString("Hello");
-PyObject *list_obj = PyList_New(2);
-
-PyList_SetItem(list_obj, 0, bytes_obj);
-PyList_SetItem(list_obj, 1, PyLong_FromLong(42));
-
-print_python_list(list_obj);
-
-Py_DECREF(bytes_obj);
-Py_DECREF(list_obj);
-
-return 0;
-}
