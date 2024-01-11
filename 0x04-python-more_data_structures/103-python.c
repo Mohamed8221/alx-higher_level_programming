@@ -1,7 +1,8 @@
 #include <stdio.h>
-#include <object.h>
-#include <listobject.h>
-#include <bytesobject.h>
+#include <time.h>
+#include <Python.h>
+
+void print_python_bytes(PyObject *p);
 
 void print_python_list(PyObject *p)
 {
