@@ -1,6 +1,9 @@
 #include <Python.h>
+#include <stdio.h>
+
 void print_python_bytes(PyObject *p);
 void print_python_list(PyObject *p);
+#define MIN(x, y) (((x) < (y)) ? (x) : (y))
 
 void print_python_list(PyObject *p) {
     printf("[*] Python list info\n");
@@ -27,7 +30,7 @@ void print_python_bytes(PyObject *p) {
     printf("[.] bytes object info\n");
     printf("  size: %ld\n", bytes->ob_base.ob_size);
     printf("  trying string: %s\n", PyBytes_AS_STRING(bytes));
-    printf("  first %d bytes: ", MIN(bytes->ob_base.ob_size, 10));
+    printf("  first %ld bytes: ", MIN(bytes->ob_base.ob_size, 10));
 
     for (int i = 0; i < MIN(bytes->ob_base.ob_size, 10); i++) {
         printf("%02x ", ((unsigned char *)bytes->ob_sval)[i]);
