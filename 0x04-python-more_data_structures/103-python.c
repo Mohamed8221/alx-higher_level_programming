@@ -1,9 +1,5 @@
-#include <Python.h>
+#include <Python>
 
-/**
-* print_python_list - Prints basic info about Python lists.
-* @p: PyObject list
-*/
 void print_python_list(PyObject *p)
 {
 long int size = PyList_Size(p);
@@ -22,10 +18,6 @@ print_python_bytes(item);
 }
 }
 
-/**
-* print_python_bytes - Prints basic info about Python bytes objects.
-* @p: PyObject
-*/
 void print_python_bytes(PyObject *p)
 {
 long int size;
