@@ -66,7 +66,6 @@ printf("%02hhx%s", str[i], i + 1 < size + 1 && i + 1 < 10 ? " " : "\n");
 void print_python_float(PyObject *p)
 {
 double value;
-
 printf("[.] float object info\n");
 if (!PyFloat_Check(p))
 {
