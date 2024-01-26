@@ -1,0 +1,12 @@
+print(add_integer(1, 2))  # Output: 3
+print(add_integer(100, -2))  # Output: 98
+print(add_integer(2))  # Output: 100
+print(add_integer(100.3, -2))  # Output: 98
+try:
+    print(add_integer(4, "School"))  # Raises TypeError: b must be an integer
+except Exception as e:
+    print(e)
+try:
+    print(add_integer(None))  # Raises TypeError: a must be an integer
+except Exception as e:
+    print(e)
