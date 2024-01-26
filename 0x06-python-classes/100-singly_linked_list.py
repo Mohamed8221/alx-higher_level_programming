@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+""" Square module """
+
+
 class Node:
     """This is a class Node that defines a node of a singly linked list.
     """
