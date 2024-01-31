@@ -1,0 +1,31 @@
+print_square(4)  
+# Output: 
+# ####
+# ####
+# ####
+# ####
+
+print("")
+print_square(10)  
+# Output: 
+# ##########
+# ##########
+# ##########
+# ##########
+# ##########
+# ##########
+# ##########
+# ##########
+# ##########
+# ##########
+
+print("")
+print_square(0)  # Output: 
+print("")
+print_square(1)  # Output: #
+print("")
+try:
+    print_square(-1)  # Raises ValueError: size must be >= 0
+except Exception as e:
+    print(e)
+print("")
