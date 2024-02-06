@@ -3,14 +3,13 @@
 import sys
 from os import path
 
-from save_to_json_file import 5-save_to_json_file.py
-from load_from_json_file import 6-load_from_json_file.py
-
+sFile = __import__('5-save_to_json_file.py').save_to_json_file.py
+lFile = __import__('6-load_from_json_file.py').load_from_json_file.py
 filename = "add_item.json"
 if path.exists(filename):
-    my_list = load_from_json_file(filename)
+    my_list = lFile(filename)
 else:
     my_list = []
 my_list.extend(sys.argv[1:])
-save_to_json_file(my_list, filename)
+sFile(my_list, filename)
 
