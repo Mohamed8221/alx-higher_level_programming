@@ -2,16 +2,15 @@
 """ Module: 7-add_item """
 import sys
 from os import path
+import importlib
 
-# Import the required functions
-from '5-save_to_json_file' import save_to_json_file
-from '6-load_from_json_file' import load_from_json_file
+sFile_module = importlib.import_module('5-save_to_json_file')
+lFile_module = importlib.import_module('6-load_from_json_file')
 
 filename = "add_item.json"
 if path.exists(filename):
-    my_list = load_from_json_file(filename)
+    my_list = lFile_module.load_from_json_file(filename)
 else:
     my_list = []
 my_list.extend(sys.argv[1:])
-save_to_json_file(my_list, filename)
-
+sFile_module.save_to_json_file(my_list, filename)
