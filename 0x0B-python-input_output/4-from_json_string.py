@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """ Module: 4-from_json_string """
-from json import loads
+import json
 
 
 def from_json_string(my_str):
