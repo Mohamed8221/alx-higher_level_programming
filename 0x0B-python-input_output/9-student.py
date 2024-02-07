@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """ Module: 9-student """
 
+
 class Student:
     """
     Class Student that defines a student.

@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """ Module: 11-student """
 
+
 class Student:
     """
     Class Student that defines a student.
@@ -34,8 +35,10 @@ class Student:
         if attrs is None:
             return self.__dict__
         else:
-            return {attr: getattr(self, attr)
-                       for attr in attrs if hasattr(self, attr)}
+            return {
+                attr: getattr(self, attr)
+                for attr in attrs if hasattr(self, attr)
+            }
 
     def reload_from_json(self, json):
         """
