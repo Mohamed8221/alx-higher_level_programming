@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""post mail"""
 import sys
 import urllib.parse
 import urllib.request

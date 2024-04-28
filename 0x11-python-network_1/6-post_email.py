@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""post mail 2"""
 import sys
 import requests
 

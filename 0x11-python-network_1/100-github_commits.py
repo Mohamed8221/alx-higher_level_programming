@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""github commits"""
 import sys
 import requests
 
