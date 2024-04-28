@@ -1,5 +1,11 @@
 #!/usr/bin/python3
-"""github commits"""
+"""
+This script takes in a repository name and an owner name,
+sends a request to the GitHub API and displays the 10 most
+recent commits.
+It uses the requests and sys packages.
+"""
+
 import sys
 import requests
 

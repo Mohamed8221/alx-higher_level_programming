@@ -1,5 +1,11 @@
 #!/usr/bin/python3
-"""json api"""
+"""
+This script takes in a letter and sends a POST request to
+http://0.0.0.0:5000/search_user with the letter as a parameter.
+It displays the body of the response in a specific format.
+It uses the requests and sys packages.
+"""
+
 import sys
 import requests
 

@@ -1,4 +1,9 @@
 #!/usr/bin/python3
+"""
+This script fetches the URL
+https://alx-intranet.hbtn.io/status using the urllib package.
+It displays the body response in a specific format.
+"""
 import urllib.request
 
 with urllib.request.urlopen('https://alx-intranet.hbtn.io/status') as response:

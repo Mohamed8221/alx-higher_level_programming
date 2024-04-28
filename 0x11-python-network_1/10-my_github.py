@@ -1,5 +1,12 @@
 #!/usr/bin/python3
-"""my github"""
+"""
+This script takes your GitHub credentials
+(username and password) and uses the GitHub API to display your id.
+It uses Basic Authentication with a personal access token as
+password to access to your information.
+It uses the requests and sys packages.
+"""
+
 import sys
 import requests
 from requests.auth import HTTPBasicAuth

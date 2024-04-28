@@ -1,5 +1,10 @@
 #!/usr/bin/python3
-"""status"""
+"""
+This script fetches the URL https://alx-intranet.hbtn.io/status
+using the requests package.
+It displays the body response in a specific format.
+"""
+
 import requests
 
 if __name__ == "__main__":

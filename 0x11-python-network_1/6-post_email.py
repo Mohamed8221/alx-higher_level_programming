@@ -1,5 +1,11 @@
 #!/usr/bin/python3
-"""post mail 2"""
+"""
+This script takes in a URL and an email address,
+sends a POST request to the passed URL with the email as a parameter,
+and finally displays the body of the response.
+It uses the requests and sys packages.
+"""
+
 import sys
 import requests
 

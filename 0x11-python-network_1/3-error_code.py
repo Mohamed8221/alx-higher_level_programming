@@ -1,5 +1,12 @@
 #!/usr/bin/python3
-"""Error code"""
+"""
+This script takes in a URL, sends a request to the URL and displays
+the body of the response.
+If the HTTP status code is greater than or equal to 400,
+it prints: Error code: followed by the HTTP status code.
+It uses the urllib and sys packages.
+"""
+
 import sys
 import urllib.request
 import urllib.error
